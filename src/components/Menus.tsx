@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Link from "next/link";
+
 const menuItems = [
   {
     title: "MENU",
@@ -112,3 +115,43 @@ const menuItems = [
     ],
   },
 ];
+
+
+
+
+
+const Menus = () => {
+  return (
+    <div className="p-4 text-sm text-gray-800 space-y-6">
+      {menuItems.map((section) => (
+        <div key={section.title}>
+          {/* Section Title */}
+          <h3 className="text-xs font-semibold text-gray-500 uppercase mb-3 tracking-wide">
+            {section.title}
+          </h3>
+
+          {/* Menu List */}
+          <ul className="space-y-2">
+            {section.items.map((item) => (
+              <li key={item.label}>
+                <Link
+                  href={item.href}
+                  className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                >
+                  <Image src={item.icon} alt={item.label} width={20} height={20} />
+                  <span className="text-gray-700">{item.label}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default Menus;
+
+
+
+
