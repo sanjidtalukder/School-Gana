@@ -1,4 +1,4 @@
-# Lama Dev School Management Dashboard
+# School Gana Management Dashboard
 
 ## Getting Started
 
