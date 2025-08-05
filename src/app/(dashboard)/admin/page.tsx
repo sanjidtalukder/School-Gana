@@ -58,7 +58,7 @@ const AdminPage = () => {
             <EventCalender></EventCalender>
           </div>
         </div>
-        <div>
+        <div className='w-full h-auto p-1'>
           <Annuncement></Annuncement>
         </div>
       </aside>
