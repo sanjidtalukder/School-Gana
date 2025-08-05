@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import React from 'react';
+
 import {
   RadialBarChart,
   RadialBar,
@@ -49,9 +50,7 @@ const CountChart = () => {
             data={data}
           >
             <RadialBar
-              minAngle={15}
               background
-              clockWise
               dataKey="count"
               label={{ position: 'insideStart', fill: '#fff' }}
             />
