@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.react-calendar {
+  width: 100% !important;
+  
+background-color: aliceblue !important;
+border-radius: 0.5rem !important;
+border: none !important;
+box-shadow: none !important;
+font-family: 'Inter', sans-serif !important;
+}
+.react-calendar_navigation {
+  background-color: antiquewhite !important; /* Tailwind gray-100 */
+  border-radius: 0.5rem !important;
+  padding: 0.5rem !important;
+}
+.react-calendar__tile {
+  padding: 0.5rem !important;
+  border-radius: 0.25rem !important;
+
+}

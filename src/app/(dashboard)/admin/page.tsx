@@ -2,6 +2,8 @@ import CountChart from '@/components/CountChart';
 import UserCard from '../../../components/UserCard';
 import AttendanceChart from '@/components/AttendanceChart';
 import FinanceChart from '@/components/FinanceChart';
+import EventCalender from '@/components/EventCalender';
+import Annuncement from '@/components/Annuncement';
 
 const AdminPage = () => {
   return (
@@ -52,9 +54,12 @@ const AdminPage = () => {
       <aside className="w-full lg:w-1/3 space-y-4">
         <h2 className="text-xl font-semibold text-gray-800">Quick Actions</h2>
         <div className="bg-white shadow-md rounded-xl p-4">
-          <p className="text-gray-600">
-            This section can include quick links, admin settings, recent logs, or stats.
-          </p>
+          <div className='w-full h-auto p-1'>
+            <EventCalender></EventCalender>
+          </div>
+        </div>
+        <div>
+          <Annuncement></Annuncement>
         </div>
       </aside>
     </div>
