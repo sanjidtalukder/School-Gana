@@ -1,8 +1,22 @@
+"use client";
+import React, { useState } from "react";
 import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
+import { teachersData } from "@/lib/data"; // ধরলাম এখানে আপনার teacher data আছে
 
 const TeacherListPage = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 7;
+
+  // total pages
+  const totalPages = Math.ceil(teachersData.length / itemsPerPage);
+
+  // slice data for current page
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentData = teachersData.slice(startIndex, endIndex);
+
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm flex-1 m-2">
       {/* Top Section */}
@@ -16,13 +30,16 @@ const TeacherListPage = () => {
 
       {/* List Section */}
       <div className="mt-6">
-        {/* TODO: Replace with Teacher List */}
-        <Table></Table>
+        <Table data={currentData} /> {/* pass sliced data */}
       </div>
 
       {/* Pagination Section */}
       <div className="mt-4 flex justify-end">
-        <Pagination></Pagination>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
       </div>
     </div>
   );

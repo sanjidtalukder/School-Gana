@@ -2,9 +2,10 @@
 
 import { teachersData } from "@/lib/data";
 import Image from "next/image";
+
 import React from "react";
 
-const Table = () => {
+const Table = ({data}) => {
   return (
     <div className="overflow-x-auto mt-6">
       <table className="min-w-full border border-gray-200 rounded-lg overflow-hidden shadow-md">

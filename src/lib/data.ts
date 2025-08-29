@@ -123,6 +123,30 @@ export const teachersData = [
     classes: ["5A", "4B", "3C"],
     address: "123 Main St, Anytown, USA",
   },
+   {
+    id: 11,
+    teacherId: "1234567890",
+    name: "John Glover",
+    email: "john@glover.com",
+    photo:
+      "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    phone: "1234567890",
+    subjects: ["Biology"],
+    classes: ["5A", "4B", "3C"],
+    address: "123 Main St, Anytown, USA",
+  },
+   {
+    id: 12,
+    teacherId: "1234567890",
+    name: "John Glover",
+    email: "john@glover.com",
+    photo:
+      "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    phone: "1234567890",
+    subjects: ["Biology"],
+    classes: ["5A", "4B", "3C"],
+    address: "123 Main St, Anytown, USA",
+  },
 ];
 
 export const studentsData = [
