@@ -1,11 +1,24 @@
 "use client";
-
-import { teachersData } from "@/lib/data";
+import React from "react";
 import Image from "next/image";
 
-import React from "react";
+// Teacher type define
+type Teacher = {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  photo: string;
+  subjects: string[];
+  classes: string[];
+};
 
-const Table = ({data}) => {
+type TeacherTableProps = {
+  data: Teacher[];
+};
+
+const TeacherTable: React.FC<TeacherTableProps> = ({ data }) => {
   return (
     <div className="overflow-x-auto mt-6">
       <table className="min-w-full border border-gray-200 rounded-lg overflow-hidden shadow-md">
@@ -33,7 +46,7 @@ const Table = ({data}) => {
 
         {/* Table Body */}
         <tbody className="divide-y divide-gray-200">
-          {teachersData.map((teacher, index) => (
+          {data.map((teacher, index) => (
             <tr
               key={teacher.id}
               className={`transition duration-200 ${
@@ -43,7 +56,7 @@ const Table = ({data}) => {
               {/* Photo */}
               <td className="px-4 py-3">
                 <Image
-                  src={teachersData.photo}
+                  src={teacher.photo}
                   alt={teacher.name}
                   width={40}
                   height={40}
@@ -98,4 +111,4 @@ const Table = ({data}) => {
   );
 };
 
-export default Table;
+export default TeacherTable;
