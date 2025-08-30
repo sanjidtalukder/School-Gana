@@ -1,28 +1,28 @@
 "use client";
 import React, { useState } from "react";
 import Pagination from "@/components/Pagination";
-import Table from "@/components/TeacherTable";
 import TableSearch from "@/components/TableSearch";
-import { teachersData } from "@/lib/data"; 
+import { studentsData } from "@/lib/data";
+import StudentTable from "@/components/StudentTable"; 
 
-const TeacherListPage = () => {
+const StudentListPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 7;
 
-  // total pages
-  const totalPages = Math.ceil(teachersData.length / itemsPerPage);
+  // ✅ total pages
+  const totalPages = Math.ceil(studentsData.length / itemsPerPage);
 
-  // slice data for current page
+  // ✅ slice data for current page
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentData = teachersData.slice(startIndex, endIndex);
+  const currentData = studentsData.slice(startIndex, endIndex);
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm flex-1 m-2">
       {/* Top Section */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         {/* Title */}
-        <h1 className="text-xl font-semibold text-gray-800">All Teachers</h1>
+        <h1 className="text-xl font-semibold text-gray-800">All Students</h1>
 
         {/* Search */}
         <TableSearch />
@@ -30,7 +30,8 @@ const TeacherListPage = () => {
 
       {/* List Section */}
       <div className="mt-6">
-        <Table data={currentData} /> {/* pass sliced data */}
+        {/* ✅ Pass paginated studentsData */}
+        <StudentTable data={currentData} />
       </div>
 
       {/* Pagination Section */}
@@ -45,4 +46,4 @@ const TeacherListPage = () => {
   );
 };
 
-export default TeacherListPage;
+export default StudentListPage;
