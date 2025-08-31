@@ -61,6 +61,10 @@ const TeacherTable: React.FC<TeacherTableProps> = ({ data }) => {
                   width={40}
                   height={40}
                   className="w-10 h-10 rounded-full object-cover border-2 border-indigo-400 shadow-sm"
+                  onError={(e) => {
+                    // Fallback in case image fails to load
+                    e.currentTarget.src = "/default-avatar.png";
+                  }}
                 />
               </td>
 

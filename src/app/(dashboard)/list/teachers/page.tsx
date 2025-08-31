@@ -1,21 +1,21 @@
 "use client";
 import React, { useState } from "react";
 import Pagination from "@/components/Pagination";
-import Table from "@/components/TeacherTable";
+import TeacherTable from "@/components/TeacherTable";
 import TableSearch from "@/components/TableSearch";
 import { teachersData } from "@/lib/data"; 
 
 const TeacherListPage = () => {
- const [currentPage, setCurrentPage] = useState(1);
-   const itemsPerPage = 7;
- 
-   // ✅ total pages
-   const totalPages = Math.ceil(teachersData.length / itemsPerPage);
- 
-   // ✅ slice data for current page
-   const startIndex = (currentPage - 1) * itemsPerPage;
-   const endIndex = startIndex + itemsPerPage;
-   const currentData = teachersData.slice(startIndex, endIndex);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 7;
+  
+  // ✅ total pages
+  const totalPages = Math.ceil(teachersData.length / itemsPerPage);
+  
+  // ✅ slice data for current page
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentData = teachersData.slice(startIndex, endIndex);
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm flex-1 m-2">
@@ -30,7 +30,7 @@ const TeacherListPage = () => {
 
       {/* List Section */}
       <div className="mt-6">
-        <Table data={currentData} /> {/* pass sliced data */}
+        <TeacherTable data={currentData} /> {/* pass sliced data */}
       </div>
 
       {/* Pagination Section */}
