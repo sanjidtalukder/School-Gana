@@ -41,7 +41,14 @@ const menuItems = [
 
 const Menus = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [expandedSections, setExpandedSections] = useState<string[]>([]);
   const pathname = usePathname();
+
+  const toggleSection = (title: string) => {
+    setExpandedSections((prev) =>
+      prev.includes(title) ? prev.filter((t) => t !== title) : [...prev, title]
+    );
+  };
 
   return (
     <>
@@ -51,7 +58,6 @@ const Menus = () => {
         className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-lg shadow hover:bg-gray-100 bg-white"
         onClick={() => setIsOpen(!isOpen)}
       >
-        {/* Hamburger Icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6 text-gray-700"
@@ -65,7 +71,7 @@ const Menus = () => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed md:static top-0 left-0 h-full bg-red-200 shadow-xl p-4 overflow-y-auto transform transition-transform duration-300 ease-in-out z-40
+        className={`fixed md:sticky md:top-0 top-0 left-0 h-full bg-red-200 shadow-xl p-4 overflow-y-auto transform transition-transform duration-300 ease-in-out z-40
           ${isOpen ? "translate-x-0" : "-translate-x-full"} 
           md:translate-x-0 w-[70%] sm:w-[50%] md:w-[8%] lg:w-[16%]`}
       >
@@ -83,45 +89,62 @@ const Menus = () => {
         </div>
 
         {/* Menu Sections */}
-        <div className="text-sm text-gray-800 space-y-8 p-1">
-          {menuItems.map((section) => (
-            <div key={section.title}>
-              <h3 className="mb-2 font-bold text-gray-600">{section.title}</h3>
-              <ul className="space-y-1">
-                {section.items
-                  .filter((item) => item.visible.includes(currentRole))
-                  .map((item) => {
-                    const isActive = pathname === item.href;
-                    return (
-                      <li key={item.label}>
-                        <Link
-                          href={item.href}
-                          className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200
-                            ${
-                              isActive
-                                ? "bg-blue-100 text-blue-700 font-semibold"
-                                : "hover:bg-gray-100 text-gray-700"
-                            }`}
-                          onClick={() => {
-                            setIsOpen(false);
-                            window.scrollTo({ top: 0, behavior: "smooth" });
-                          }}
-                        >
-                          <Image
-                            src={item.icon}
-                            alt={item.label}
-                            width={20}
-                            height={20}
-                            className="object-contain"
-                          />
-                          <span className=" md:block">{item.label}</span>
-                        </Link>
-                      </li>
-                    );
-                  })}
-              </ul>
-            </div>
-          ))}
+        <div className="text-sm text-gray-800 space-y-4 p-1">
+          {menuItems.map((section) => {
+            const isExpanded = expandedSections.includes(section.title);
+            return (
+              <div key={section.title}>
+                <button
+                  className="w-full flex justify-between items-center px-2 py-1 font-bold text-gray-600 hover:text-gray-800"
+                  onClick={() => toggleSection(section.title)}
+                >
+                  {section.title}
+                  <span>{isExpanded ? "▲" : "▼"}</span>
+                </button>
+                {isExpanded && (
+                  <ul className="space-y-1 mt-2">
+                    {section.items
+                      .filter((item) => item.visible.includes(currentRole))
+                      .map((item) => {
+                        const isActive = pathname === item.href;
+                        return (
+                          <li key={item.label}>
+                            <Link
+                              href={item.href}
+                              className={`group flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200
+                                ${
+                                  isActive
+                                    ? "bg-blue-100 text-blue-700 font-semibold"
+                                    : "hover:bg-gray-100 text-gray-700"
+                                }`}
+                              onClick={() => {
+                                setIsOpen(false);
+                                window.scrollTo({ top: 0, behavior: "smooth" });
+                              }}
+                            >
+                              <div className="relative">
+                                <Image
+                                  src={item.icon}
+                                  alt={item.label}
+                                  width={20}
+                                  height={20}
+                                  className="object-contain"
+                                />
+                                {/* Tooltip on small screens */}
+                                <span className="absolute left-full ml-2 px-2 py-1 text-xs bg-black text-white rounded opacity-0 group-hover:opacity-100 transition md:hidden z-50 whitespace-nowrap">
+                                  {item.label}
+                                </span>
+                              </div>
+                              <span className="md:block">{item.label}</span>
+                            </Link>
+                          </li>
+                        );
+                      })}
+                  </ul>
+                )}
+              </div>
+            );
+          })}
         </div>
       </aside>
 
