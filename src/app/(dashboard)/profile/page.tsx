@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import {
   User,
   Mail,
@@ -55,10 +56,12 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         </div>
 
         {/* Profile Header */}
-        <div className="flex flex-col md:flex-row items-center gap-6">
-          <img
+        <div className="flex items-center gap-4">
+          <Image
             src={user.avatar}
             alt="avatar"
+            width={112}
+            height={112}
             className="w-28 h-28 rounded-full border-4 border-blue-500 shadow-lg"
           />
           <div>

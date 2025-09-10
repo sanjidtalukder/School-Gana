@@ -13,7 +13,7 @@ const demoMessages = [
 const MessagePage = () => {
   const [messages, setMessages] = useState(demoMessages);
   const [newMessage, setNewMessage] = useState("");
-  const messagesEndRef = useRef(null);
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   // Auto scroll to bottom
   useEffect(() => {

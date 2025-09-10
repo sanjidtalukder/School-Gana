@@ -16,7 +16,14 @@ const EventPage = () => {
     startIndex + ITEMS_PER_PAGE
   );
 
-  const handlePageChange = (page) => {
+  interface Announcement {
+    id: number;
+    title: string;
+    class: string;
+    date: string;
+  }
+
+  const handlePageChange = (page: number): void => {
     if (page > 0 && page <= totalPages) {
       setCurrentPage(page);
     }
