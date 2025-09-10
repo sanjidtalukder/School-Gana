@@ -9,7 +9,16 @@ const AttendancePage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(eventsData.length / ITEMS_PER_PAGE);
 
-  const handlePageChange = (page) => {
+  interface EventItem {
+    id: number | string;
+    title: string;
+    class: string;
+    date: string;
+    startTime: string;
+    endTime: string;
+  }
+
+  const handlePageChange = (page: number): void => {
     if (page < 1 || page > totalPages) return;
     setCurrentPage(page);
   };
