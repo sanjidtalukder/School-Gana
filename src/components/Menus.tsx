@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 
 type UserRole = "admin" | "teacher" | "student" | "parent";
 
-const currentRole: UserRole = "admin"; 
+const currentRole: UserRole = "admin";
 
 const menuItems = [
   {
@@ -55,15 +55,16 @@ const Menus = () => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full w-46  shadow-xl p-4 overflow-y-auto transform transition-transform duration-300 ease-in-out z-40
+        className={`fixed md:static top-0 left-0 h-full bg-red-200 shadow-xl p-4 overflow-y-auto transform transition-transform duration-300 ease-in-out z-40
           ${isOpen ? "translate-x-0" : "-translate-x-full"} 
-          md:translate-x-0`}
+          md:translate-x-0 w-[70%] sm:w-[50%] md:w-[8%] lg:w-[16%]`}
       >
-        {/* Sidebar Header */}
-        <div className="flex justify-between items-center mb-6">
-          {/* <h2 className="text-xl font-bold text-blue-600">Dashboard</h2> */}
+        {/* Sidebar Header with Logo */}
+        <div className="flex items-center justify-center lg:justify-start gap-2 mb-6">
+          <Image src="/logo.png" alt="logo" width={32} height={32} />
+          <span className="hidden lg:block font-semibold">School Gana</span>
           <button
-            className="md:hidden text-gray-500 hover:text-gray-700"
+            className="md:hidden ml-auto text-gray-500 hover:text-gray-700"
             onClick={() => setIsOpen(false)}
           >
             ✖
@@ -74,10 +75,6 @@ const Menus = () => {
         <div className="text-sm text-gray-800 space-y-8 p-1">
           {menuItems.map((section) => (
             <div key={section.title}>
-              {/* <h3 className="text-xs font-semibold text-gray-500 uppercase mb-3 tracking-wide">
-                {section.title}
-              </h3> */}
-
               <ul className="space-y-1">
                 {section.items
                   .filter((item) => item.visible.includes(currentRole))
@@ -102,7 +99,7 @@ const Menus = () => {
                             height={20}
                             className="object-contain"
                           />
-                          <span>{item.label}</span>
+                          <span className="hidden md:block">{item.label}</span>
                         </Link>
                       </li>
                     );
