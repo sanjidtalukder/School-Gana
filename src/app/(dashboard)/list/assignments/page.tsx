@@ -11,7 +11,15 @@ const AssignmentPage = () => {
 
   const totalPages = Math.ceil(assignmentsData.length / ITEMS_PER_PAGE);
 
-  const handlePageChange = (page) => {
+  interface Assignment {
+    id: string | number;
+    subject: string;
+    class: string;
+    teacher: string;
+    dueDate: string;
+  }
+
+  const handlePageChange = (page: number): void => {
     setCurrentPage(page);
   };
 
