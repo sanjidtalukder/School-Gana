@@ -33,9 +33,9 @@ const Profile = () => {
   };
 
   // Form handle
-  const handleChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
+const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setUser({ ...user, [e.target.name as keyof typeof user]: e.target.value });
+};
 
   return (
     <div

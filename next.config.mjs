@@ -37,7 +37,16 @@ const nextConfig = {
         hostname: 'assets.reflections.live',
         pathname: '/**',
       },
-
+ {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
+        pathname: '/**',
+      },
 
 
     ],

@@ -1,7 +1,7 @@
 "use client";
-import { studentsData } from "@/lib/data";
-import Image from "next/image";
+
 import React from "react";
+import Image from "next/image";
 
 const StudentTable = ({ data }) => {
   return (
@@ -27,7 +27,7 @@ const StudentTable = ({ data }) => {
             <tr key={student.id} className="hover:bg-gray-50">
               <td className="px-4 py-3">
                 <Image
-                  src={studentsData.photo}
+                  src={student.photo}
                   alt={student.name}
                   width={40}
                   height={40}

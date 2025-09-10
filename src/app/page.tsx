@@ -159,7 +159,7 @@ const gallery = [
             {testimonials.map((t, i) => (
               <div key={i} className="p-6 bg-white rounded-xl shadow hover:shadow-md transition">
                 <Image src={t.img} alt={t.name} width={80} height={80} className="rounded-full mx-auto mb-4" />
-                <p className="text-gray-600 italic">"{t.feedback}"</p>
+                <p className="text-gray-600 italic">&quot;{t.feedback}&quot;</p>
                 <h3 className="mt-4 font-semibold">{t.name}</h3>
                 <p className="text-sm text-gray-500">{t.role}</p>
               </div>

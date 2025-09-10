@@ -124,7 +124,7 @@ export default function LoginPage() {
           </div>
 
           <div className="mt-auto text-sm opacity-90">
-            <p>Tip: Use the "Remember me" to save email locally.</p>
+            <p>Tip: Use the &quot;Remember me&quot; to save email locally.</p>
           </div>
         </div>
 
