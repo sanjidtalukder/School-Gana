@@ -45,12 +45,22 @@ const Menus = () => {
 
   return (
     <>
-      {/* Mobile Hamburger Button */}
+      {/* Hamburger Button for Mobile */}
       <button
-        className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-lg shadow hover:bg-gray-100"
+        aria-label="Toggle sidebar"
+        className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-lg shadow hover:bg-gray-100 bg-white"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <Image src="/menu.svg" alt="menu" width={24} height={24} />
+        {/* Hamburger Icon */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6 text-gray-700"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
       </button>
 
       {/* Sidebar */}
@@ -59,13 +69,14 @@ const Menus = () => {
           ${isOpen ? "translate-x-0" : "-translate-x-full"} 
           md:translate-x-0 w-[70%] sm:w-[50%] md:w-[8%] lg:w-[16%]`}
       >
-        {/* Sidebar Header with Logo */}
+        {/* Sidebar Header */}
         <div className="flex items-center justify-center lg:justify-start gap-2 mb-6">
           <Image src="/logo.png" alt="logo" width={32} height={32} />
           <span className="hidden lg:block font-semibold">School Gana</span>
           <button
             className="md:hidden ml-auto text-gray-500 hover:text-gray-700"
             onClick={() => setIsOpen(false)}
+            aria-label="Close sidebar"
           >
             ✖
           </button>
@@ -75,6 +86,7 @@ const Menus = () => {
         <div className="text-sm text-gray-800 space-y-8 p-1">
           {menuItems.map((section) => (
             <div key={section.title}>
+              <h3 className="mb-2 font-bold text-gray-600">{section.title}</h3>
               <ul className="space-y-1">
                 {section.items
                   .filter((item) => item.visible.includes(currentRole))
@@ -90,7 +102,10 @@ const Menus = () => {
                                 ? "bg-blue-100 text-blue-700 font-semibold"
                                 : "hover:bg-gray-100 text-gray-700"
                             }`}
-                          onClick={() => setIsOpen(false)}
+                          onClick={() => {
+                            setIsOpen(false);
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }}
                         >
                           <Image
                             src={item.icon}
@@ -99,7 +114,7 @@ const Menus = () => {
                             height={20}
                             className="object-contain"
                           />
-                          <span className="hidden md:block">{item.label}</span>
+                          <span className=" md:block">{item.label}</span>
                         </Link>
                       </li>
                     );
